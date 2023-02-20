@@ -1,2 +1,3 @@
-# eggo
-More one graphic renderer
+# EggO
+More one graphic renderer, but, this is mine.
+
