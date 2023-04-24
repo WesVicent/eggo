@@ -1,28 +1,4 @@
-/**
-	Created by: Wes Ferreira 2021-05-26
-*/
-
-#pragma once
-#ifndef BUFFER_H
-#define BUFFER_H
-
-class Buffer {
-protected:
-
-public:
-	void update(BufferData vertices);
-
-	Buffer(BufferData vertices, const std::function<void()>& whenBond);
-	Buffer(const std::function<void()>& whenBond);
-
-	// Virtual destructor to compiler automagically call base destructor on child destructior.
-	~Buffer();
-
-private:
-	const size_t BUFFER_CAPACITY = sizeof(VertexData) * 12;
-	unsigned int id;
-
-};
+#include "core/buffer/Buffer.h"
 
 void Buffer::update(BufferData vertices) {
 	glBindBuffer(GL_ARRAY_BUFFER, this->id);
@@ -57,6 +33,3 @@ Buffer::Buffer(const std::function<void()>& whenBond) {
 Buffer::~Buffer() {
 	glDeleteBuffers(1, &this->id);
 }
-
-#endif // !BUFFER_H
-

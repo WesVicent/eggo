@@ -1,29 +1,4 @@
-/**
-	Created by: Wes Ferreira 2021-05-26
-*/
-
-#pragma once
-#ifndef VERTEX_BUFFER_H
-#define VERTEX_BUFFER_H
-
-class VertexBuffer {
-protected:
-
-public:
-	unsigned int id;
-
-	void update(BufferData vertices, BufferData indices);
-
-	VertexBuffer(BufferData indices, BufferData vertices, const std::function<void()>& whenBond);
-	VertexBuffer(const std::function<void()>& whenBond);
-	virtual ~VertexBuffer();
-
-
-private:
-	unsigned int indiceBufferId;
-	std::unique_ptr<Buffer> buffer;
-	const size_t INDEX_BUFFER_CAPACITY = sizeof(unsigned int) * 18;
-};
+#include "core/buffer/VertexBuffer.h"
 
 void VertexBuffer::update(BufferData vertices, BufferData indices) {
 	unsigned int* data = (unsigned int*) indices.ref;
@@ -72,7 +47,3 @@ VertexBuffer::~VertexBuffer() {
 	glDeleteVertexArrays(1, &this->id);
 	glDeleteBuffers(1, &this->indiceBufferId);
 }
-
-
-#endif // !VERTEX_BUFFER_H
-

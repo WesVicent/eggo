@@ -6,12 +6,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(PROJ_DIR "${CMAKE_SOURCE_DIR}/eggo")
-					
-file(GLOB sources "${PROJ_DIR}/src/lib.cpp")
 
-file(GLOB headers  
-"${PROJ_DIR}/src/**/*.h"
-"${PROJ_DIR}/src/**/**/*.h")
+file(GLOB sources
+"${PROJ_DIR}/src/*.cpp"
+"${PROJ_DIR}/src/**/*.cpp"
+"${PROJ_DIR}/src/**/**/*.cpp")
+
+file(GLOB headers
+"${PROJ_DIR}/include/*.h"
+"${PROJ_DIR}/include/**/*.h"
+"${PROJ_DIR}/include/**/**/*.h")
 
 #[[
 	When the project is running in VS (.sln) the "current_path" is ./build (.sln path)
@@ -31,9 +35,14 @@ endif(BUILD_TYPE_CMDEBUG)
 
 add_library(eggo ${sources})
 
+target_compile_definitions(eggo PRIVATE EGGO_PRIVATE)
+
 target_sources(eggo PUBLIC ${headers})
 
 # Create source groups for fancy IDE structure
-source_group(TREE "${PROJ_DIR}/src" PREFIX "Header Files" FILES ${headers})
+source_group(TREE "${PROJ_DIR}/include" PREFIX "Header Files" FILES ${headers})
+source_group(TREE "${PROJ_DIR}/src" PREFIX "Source Files" FILES ${sources})
+
+target_include_directories(eggo PUBLIC ${PROJ_DIR}/include)
 
 target_link_libraries(eggo PRIVATE "${CONAN_LIBS}")

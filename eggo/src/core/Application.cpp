@@ -1,31 +1,13 @@
-/**
-	Created by: Wes Ferreira 2021-05-21
-*/
+#include "core/Application.h"
 
-#pragma once
-#ifndef APPLICATION_H
-#define APPLICATION_H
-
-class Application { // Singleton
-protected:
-public:
-	GLFWwindow* windowContext;
-
-	static Application* getInstance();
-	~Application();
-
-private:
-	static Application* instance;
-
-	Application();
-
-};
 Application* Application::instance = 0;
-
 
 Application::Application() {
 	this->windowContext = MainWindow::Entity::init();
 	MainWindow::renderer = Renderer::Entity::init();
+
+	std::cout << "&MainWindow::renderer App" << std::endl;
+	std::cout << &MainWindow::renderer << std::endl;
 
 	// Any polygon could to be drawn like this.
 	VertexData v0, v1, v2, v3, v4, v5;
@@ -57,7 +39,8 @@ Application::Application() {
 	MainLoop::Entity::init(this->windowContext);
 }
 
-Application* Application::getInstance() {
+Application* Application::getInstance()
+{
 	if(instance == 0) {
 		instance = new Application();
 	}
@@ -70,6 +53,3 @@ Application::~Application() {
 
 	delete instance;
 }
-
-#endif // !APPLICATION_H
-

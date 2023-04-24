@@ -7,6 +7,9 @@
 #ifndef H_INPUT_H
 #define H_INPUT_H
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 namespace Input {
 	class Handler {
 	public:
@@ -14,17 +17,6 @@ namespace Input {
 
 	private:
 	};
-
-	void Handler::intercept(int& key, int& action, bool (&pool) [349]) {
-		if (action == GLFW_PRESS || action == GLFW_REPEAT) {
-			pool[key] = true;
-		}
-		
-		if (action == GLFW_RELEASE) {
-			pool[key] = false;
-		}
-
-	}
 }
 
 #endif // !H_INPUT_H

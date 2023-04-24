@@ -1,27 +1,4 @@
-/**
-	Created by: Wes Ferreira 2021-05-20
-*/
-
-#pragma once
-#ifndef WINDOW_H
-#define WINDOW_H
-
-class Window {
-protected:
-	Window(int width, int height, const char* title);
-
-	void bindKeyCallBack(GLFWkeyfun cbfun);
-
-	GLFWwindow* context;
-
-public:
-	// Virtual destructor to compiler automagically call base destructor on child destructior.
-	virtual ~Window();
-
-private:
-	
-
-};
+#include "core/window/Window.h"
 
 void Window::bindKeyCallBack(GLFWkeyfun cbfun) {
 	glfwSetKeyCallback(this->context, cbfun);
@@ -50,6 +27,3 @@ Window::Window(int width, int height, const char* title) {
 
 Window::~Window() {
 }
-
-#endif // !WINDOW_H
-

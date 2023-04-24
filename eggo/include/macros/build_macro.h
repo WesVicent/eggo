@@ -3,6 +3,8 @@
 #ifndef BUILD_MACRO
 #define BUILD_MACRO
 
+#define GLEW_STATIC
+
 #ifdef CMAKE_INTDIR // variable used ONLY in Visual Studio build system.
 	#ifdef VSDEBUG
 		#define BUILD_TYPE_VSDEBUG 1

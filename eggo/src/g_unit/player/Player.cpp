@@ -1,32 +1,4 @@
-/**
-	Created by: Wes Ferreira 2020-01-05
-*/
-
-#pragma once
-#ifndef PLAYER_H
-#define PLAYER_H
-
-class Player : public G::Controllable {
-public:
-	bool canMove = false;
-	
-	void virtual allowMovements(MainWindow::EnabledKeys key);
-
-	Player(float x, float y);
-	Player();
-	~Player();
-
-private:
-	const float velocity = 0.0002f;
-	
-	glm::mat4 movement = glm::mat4(1.0);
-	
-	int u_movement;
-	std::shared_ptr<G::Batch> batch;
-
-	void checkMovementCall(MainWindow::EnabledKeys key);
-	Coordinates calculateMovements(MainWindow::EnabledKeys key);
-};
+#include "g_unit/player/Player.h"
 
 Player::Player() :Player(0.0f, 0.0f) { }
 
@@ -67,7 +39,7 @@ void Player::allowMovements(MainWindow::EnabledKeys key) {
 		}
 
 		this->movement = glm::translate(this->movement, glm::vec3(calculated.x, calculated.y, 0.0f));
-		
+
 		batch->updateBuffer();
 	}
 }
@@ -112,6 +84,3 @@ Coordinates Player::calculateMovements(MainWindow::EnabledKeys key) {
 
 	return Coordinates{ x, y };
 }
-
-
-#endif // !PLAYER_H
