@@ -6,14 +6,13 @@
 #ifndef MAIN_WINDOW_H
 #define MAIN_WINDOW_H
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
 #include <memory>
 
 #include "core/window/Window.h"
 #include "core/window/MainWindowSpecs.h"
 #include "g_unit/Renderer.h"
+
+class GLFWwindow;
 
 namespace MainWindow {
 

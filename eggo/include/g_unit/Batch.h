@@ -6,12 +6,7 @@
 #ifndef BATCH_H
 #define BATCH_H
 
-#include <GL/glew.h>
-
 #include <iostream>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 #include <memory>
 #include <vector>
 
@@ -19,6 +14,10 @@
 #include "util/Global.h"
 #include "core/buffer/VertexBuffer.h"
 #include "handlers/File.h"
+
+#include <glm/mat4x4.hpp>
+
+typedef unsigned int GLuint;
 
 namespace G {
 	class Batch {

@@ -6,12 +6,11 @@
 #ifndef WINDOW_CONFIG_H
 #define WINDOW_CONFIG_H
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
 #include "util/namespaces/MainWindow.h"
 #include "util/namespaces/Input.h"
 #include "handlers/Input.h"
+
+class GLFWwindow;
 
 class MainWindowSpecs {
 public:

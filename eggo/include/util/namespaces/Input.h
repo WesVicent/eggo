@@ -2,6 +2,16 @@
 #ifndef NS_INPUT_H
 #define NS_INPUT_H
 
+#define GLFW_KEY_RIGHT              262
+#define GLFW_KEY_LEFT               263
+#define GLFW_KEY_DOWN               264
+#define GLFW_KEY_UP                 265
+
+#define GLFW_KEY_W                  87
+#define GLFW_KEY_S                  83
+#define GLFW_KEY_A                  65
+#define GLFW_KEY_D                  68
+
 namespace Input {
 	struct KEY {
 		// Player control

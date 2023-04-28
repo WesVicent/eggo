@@ -2,9 +2,11 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include <glm/glm.hpp>
 #include <vector>
 #include <string>
+
+#include <glm/vec3.hpp>
+#include <glm/vec4.hpp>
 
 // USEFUL STRUCTS
 struct Coordinates {

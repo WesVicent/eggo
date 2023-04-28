@@ -1,5 +1,9 @@
 #include "g_unit/Renderer.h"
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <glm/gtc/matrix_transform.hpp>
+
 void Renderer::Entity::allowCameraMovements(MainWindow::EnabledKeys key)
 {
 	bool canMove = key.d || key.a || key.w || key.s;

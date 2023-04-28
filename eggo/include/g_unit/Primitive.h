@@ -10,6 +10,8 @@
 
 #include "util/Utils.h"
 
+#include <glm/vec4.hpp>
+
 namespace G {
 	class Primitive {
 	protected:

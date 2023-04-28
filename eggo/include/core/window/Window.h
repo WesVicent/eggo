@@ -6,8 +6,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+class GLFWwindow;
+typedef void (*GLFWkeyfun)(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 class Window {
 protected:

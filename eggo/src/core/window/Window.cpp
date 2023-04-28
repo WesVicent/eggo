@@ -1,5 +1,8 @@
 #include "core/window/Window.h"
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 void Window::bindKeyCallBack(GLFWkeyfun cbfun) {
 	glfwSetKeyCallback(this->context, cbfun);
 }

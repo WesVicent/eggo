@@ -1,5 +1,8 @@
 #include "core/MainLoop.h"
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 void MainLoop::Entity::init(GLFWwindow *context) {
 	while (!glfwWindowShouldClose(context))
 	{

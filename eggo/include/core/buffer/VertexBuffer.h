@@ -7,8 +7,6 @@
 #ifndef VERTEX_BUFFER_H
 #define VERTEX_BUFFER_H
 
-#include <GL/glew.h>
-
 #include <functional>
 
 #include "util/Utils.h"

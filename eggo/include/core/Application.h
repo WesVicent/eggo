@@ -6,18 +6,15 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
 #include "core/window/MainWindow.h"
 #include "core/MainLoop.h"
 #include "util/Utils.h"
-#include "g_unit/Batch.h"	
-#include "g_unit/player/Player.h"	
+#include "g_unit/Batch.h"
+#include "g_unit/player/Player.h"
 
+class GLFWwindow;
 
 class Application { // Singleton
-protected:
 public:
 	GLFWwindow* windowContext;
 
@@ -27,8 +24,6 @@ public:
 private:
 	static Application* instance;
 	Application();
-
-
 };
 #endif // !APPLICATION_H
 

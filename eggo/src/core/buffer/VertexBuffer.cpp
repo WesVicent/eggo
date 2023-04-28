@@ -1,5 +1,7 @@
 #include "core/buffer/VertexBuffer.h"
 
+#include <GL/glew.h>
+
 void VertexBuffer::update(BufferData vertices, BufferData indices) {
 	unsigned int* data = (unsigned int*) indices.ref;
 

@@ -1,5 +1,7 @@
 #include "g_unit/Primitive.h"
 
+#include <glm/vec3.hpp>
+
 ShapeData G::Primitive::createSqr(float x, float y) {
 	std::vector<glm::vec4> defaultColor { glm::vec4 { 0.141f, 0.913f, 0.941f, 1.0f } };
 	return createSqr(x, y, defaultColor);

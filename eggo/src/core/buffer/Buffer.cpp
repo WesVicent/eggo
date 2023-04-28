@@ -1,5 +1,7 @@
 #include "core/buffer/Buffer.h"
 
+#include <GL/glew.h>
+
 void Buffer::update(BufferData vertices) {
 	glBindBuffer(GL_ARRAY_BUFFER, this->id);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.size, (VertexData*) vertices.ref);

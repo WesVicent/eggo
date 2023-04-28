@@ -6,12 +6,8 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
 #include <memory>
 #include <vector>
-#include <glm/gtc/matrix_transform.hpp>
 
 #include "util/Utils.h"
 #include "util/namespaces/MainWindow.h"

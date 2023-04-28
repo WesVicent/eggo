@@ -1,13 +1,14 @@
 #include "core/Application.h"
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+
 Application* Application::instance = 0;
 
 Application::Application() {
 	this->windowContext = MainWindow::Entity::init();
 	MainWindow::renderer = Renderer::Entity::init();
-
-	std::cout << "&MainWindow::renderer App" << std::endl;
-	std::cout << &MainWindow::renderer << std::endl;
 
 	// Any polygon could to be drawn like this.
 	VertexData v0, v1, v2, v3, v4, v5;

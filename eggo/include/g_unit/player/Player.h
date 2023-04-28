@@ -6,9 +6,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-
 #include "util/namespaces/MainWindow.h"
 #include "core/window/MainWindow.h"
 #include "util/Utils.h"
@@ -16,6 +13,7 @@
 #include "g_unit/Primitive.h"
 #include "g_unit/Batch.h"
 
+#include <glm/mat4x4.hpp>
 
 class Player : public G::Controllable {
 public:

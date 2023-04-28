@@ -26,23 +26,23 @@ if(CMAKE_GENERATOR  MATCHES "Visual Studio")
 	"${PROJ_DIR}/include/*.h"
 	"${PROJ_DIR}/include/**/*.h"
 	"${PROJ_DIR}/include/**/**/*.h")
-	
-	# Flags to VS  use this CMake roles to IDE build.
-	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DCMAKE_BUILD_TYPE=Release") 
-	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DCMAKE_BUILD_TYPE=Debug") 
-	
-	if(CMAKE_BUILD_TYPE STREQUAL ${DEBUG_TYPE}) # ---------------------------------------------------- Debug
-		set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DVSDEBUG") 
-		set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MT")
 
-		add_library(eggo ${sources})
+	# Flags to VS  use this CMake roles to IDE build.
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DCMAKE_BUILD_TYPE=Release")
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DCMAKE_BUILD_TYPE=Debug")
+
+	if(CMAKE_BUILD_TYPE STREQUAL ${DEBUG_TYPE}) # ---------------------------------------------------- Debug
+		set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DVSDEBUG")
+		#set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MT")
+
+		add_library(eggo STATIC ${sources})
 	endif()
 
 	if(CMAKE_BUILD_TYPE STREQUAL ${RELEASE_TYPE}) # ------------------------------------------------ Release
 		set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 		add_library(eggo SHARED ${sources})
 	endif()
-	
+
 		target_sources(eggo PUBLIC ${headers}) # ------------------------------------------------------------------ Common
 
 		# Create source groups for fancy IDE structure
@@ -51,8 +51,8 @@ if(CMAKE_GENERATOR  MATCHES "Visual Studio")
 
 		target_include_directories(eggo PUBLIC ${PROJ_DIR}/include)
 
-		target_link_libraries(eggo PUBLIC ${CONAN_LIBS})
-	
+		target_link_libraries(eggo PRIVATE ${CONAN_LIBS})
+
 else() # Is not trying to  generating a Visual Studio solution.
 	message("Message: Eggo v-${CMAKE_PROJECT_VERSION}")
 	message("For now Eggo has only Win Visual Studio as official CMake build.")

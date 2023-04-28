@@ -7,13 +7,10 @@
 #ifndef H_INPUT_H
 #define H_INPUT_H
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
 namespace Input {
 	class Handler {
 	public:
-		static void intercept(int& key, int& action, bool (&pool)[349]);
+		static void intercept(int &key, int &action, bool (&pool)[349]);
 
 	private:
 	};
