@@ -6,6 +6,7 @@
 #include "util/Global.h"
 #include "core/Application.h"
 
+
 namespace eggo {
 	void init();
 }

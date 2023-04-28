@@ -5,3 +5,5 @@ glm/cci.20230113
 
 [generators]
 cmake
+
+[options]
