@@ -10,15 +10,13 @@
 
 #include "util/Utils.h"
 
-#include <glm/vec4.hpp>
-
 namespace G {
 	class Primitive {
 	protected:
 
 	public:
 		static ShapeData createSqr(float x, float y);
-		static ShapeData createSqr(float x, float y, std::vector<glm::vec4> gradient);
+		static ShapeData createSqr(float x, float y, std::vector<math::vec4> gradient);
 
 		virtual ~Primitive() { }; //TODO: (Need?)
 

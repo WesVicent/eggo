@@ -15,8 +15,6 @@
 #include "core/buffer/VertexBuffer.h"
 #include "handlers/File.h"
 
-#include <glm/mat4x4.hpp>
-
 typedef unsigned int GLuint;
 
 namespace G {
@@ -24,14 +22,14 @@ namespace G {
 	public:
 		bool isDynamic = false;
 		int VERTICES_COUNT = 0;
-		glm::mat4 cameraPosition = glm::mat4(1.0);
+		math::mat4 cameraPosition = math::mat4(1.0);
 		std::unique_ptr<VertexBuffer> buffer;
 		std::vector<unsigned int> INDICES;
 		VertexData VERTICES[3 * 4]; // UNIT_MAX_COUNT * VERTEX_MAX_AMOUNT
 		GLuint programShader;
 
 		void add(ShapeData unit);
-		void updateUniforms(glm::mat4 movement);
+		void updateUniforms(math::mat4 movement);
 		void updateBuffer();
 
 		Batch();

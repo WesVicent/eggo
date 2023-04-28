@@ -13,8 +13,6 @@
 #include "g_unit/Primitive.h"
 #include "g_unit/Batch.h"
 
-#include <glm/mat4x4.hpp>
-
 class Player : public G::Controllable {
 public:
 	bool canMove = false;
@@ -28,7 +26,7 @@ public:
 private:
 	const float velocity = 0.0002f;
 
-	glm::mat4 movement = glm::mat4(1.0);
+	math::mat4 movement = math::mat4(1.0);
 
 	int u_movement;
 	std::shared_ptr<G::Batch> batch;

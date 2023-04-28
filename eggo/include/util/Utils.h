@@ -5,8 +5,8 @@
 #include <vector>
 #include <string>
 
-#include <glm/vec3.hpp>
-#include <glm/vec4.hpp>
+#include "math/math.h"
+
 
 // USEFUL STRUCTS
 struct Coordinates {
@@ -20,9 +20,10 @@ struct BufferData {
 };
 
 struct VertexData {
-	glm::vec3 position;
-	glm::vec4 color;
+	math::vec3 position;
+	math::vec4 color;
 };
+
 
 struct ShapeData {
 	std::vector<VertexData> vertices;

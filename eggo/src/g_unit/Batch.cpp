@@ -49,19 +49,41 @@ void G::Batch::updateBuffer() {
 	buffer->update(vertices, indices);
 }
 
-void G::Batch::updateUniforms(glm::mat4 movement) {
+void G::Batch::updateUniforms(math::mat4 movement) {
+	// TODO: Remove this static casting. 
+	glm::vec4 v0 = glm::vec4(movement.a.x, movement.a.y, movement.a.z, movement.a.a);
+	glm::vec4 v1 = glm::vec4(movement.b.x, movement.b.y, movement.b.z, movement.b.a);
+	glm::vec4 v2 = glm::vec4(movement.c.x, movement.c.y, movement.c.z, movement.c.a);
+	glm::vec4 v3 = glm::vec4(movement.d.x, movement.d.y, movement.d.z, movement.d.a);
+
+	glm::mat4 matrix = glm::mat4(v0, v1, v2, v3);
 	glUseProgram(programShader);
 	int u_movement = glGetUniformLocation(programShader, "movement");
-	glUniformMatrix4fv(u_movement, 1, GL_FALSE, glm::value_ptr(movement));
+	glUniformMatrix4fv(u_movement, 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
 void G::Batch::processUniforms() {
 	glUseProgram(programShader);
 	int u_movement = glGetUniformLocation(programShader, "movement");
 
-	cameraPosition = glm::translate(cameraPosition, glm::vec3(0.0f, 0.0f, 0.0f));
+	// TODO: Remove this static casting. 
+	glm::vec4 v0 = glm::vec4(cameraPosition.a.x, cameraPosition.a.y, cameraPosition.a.z, cameraPosition.a.a);
+	glm::vec4 v1 = glm::vec4(cameraPosition.b.x, cameraPosition.b.y, cameraPosition.b.z, cameraPosition.b.a);
+	glm::vec4 v2 = glm::vec4(cameraPosition.c.x, cameraPosition.c.y, cameraPosition.c.z, cameraPosition.c.a);
+	glm::vec4 v3 = glm::vec4(cameraPosition.d.x, cameraPosition.d.y, cameraPosition.d.z, cameraPosition.d.a);
 
-	glUniformMatrix4fv(u_movement, 1, GL_FALSE, glm::value_ptr(cameraPosition));
+	glm::mat4 matrix = glm::mat4(v0, v1, v2, v3);
+
+	glm::mat4 cameraP = glm::translate(matrix, glm::vec3(0.0f, 0.0f, 0.0f));
+
+	math::vec4 mV0 = {cameraP[0].x, cameraP[0].y , cameraP[0].z , cameraP[0].w};
+	math::vec4 mV1 = {cameraP[1].x, cameraP[1].y , cameraP[1].z , cameraP[1].w};
+	math::vec4 mV2 = {cameraP[2].x, cameraP[2].y , cameraP[2].z , cameraP[2].w};
+	math::vec4 mV3 = {cameraP[3].x, cameraP[3].y , cameraP[3].z , cameraP[3].w};
+
+	cameraPosition = {mV0, mV1, mV2, mV3};
+
+	glUniformMatrix4fv(u_movement, 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
 void G::Batch::add(ShapeData unit) {
