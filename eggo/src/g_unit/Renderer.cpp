@@ -4,15 +4,14 @@
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 
-void Renderer::Entity::allowCameraMovements(MainWindow::EnabledKeys key)
-{
+void Renderer::Entity::allowCameraMovements(MainWindow::EnabledKeys key) {
 	bool canMove = key.d || key.a || key.w || key.s;
 
 	if(canMove) {
 		Coordinates calculated = calculateMovements(key);
 		// Shaders that has uniforms with same names, even in another shader program, share these uniforms among themselves inside GPU.
 		// So here, "batches[0]" because I'm changing a common uniform across all shaders, so doesn't matter which batch use to do.
-		// TODO: Remove this static casting. 
+		// TODO: Remove this static casting.
 		glm::vec4 v0 = glm::vec4(batches[0]->cameraPosition.a.x, batches[0]->cameraPosition.a.y, batches[0]->cameraPosition.a.z, batches[0]->cameraPosition.a.a);
 		glm::vec4 v1 = glm::vec4(batches[0]->cameraPosition.b.x, batches[0]->cameraPosition.b.y, batches[0]->cameraPosition.b.z, batches[0]->cameraPosition.b.a);
 		glm::vec4 v2 = glm::vec4(batches[0]->cameraPosition.c.x, batches[0]->cameraPosition.c.y, batches[0]->cameraPosition.c.z, batches[0]->cameraPosition.c.a);
@@ -26,7 +25,7 @@ void Renderer::Entity::allowCameraMovements(MainWindow::EnabledKeys key)
 		math::vec4 mV1 = { cameraP[1].x, cameraP[1].y , cameraP[1].z , cameraP[1].w };
 		math::vec4 mV2 = { cameraP[2].x, cameraP[2].y , cameraP[2].z , cameraP[2].w };
 		math::vec4 mV3 = { cameraP[3].x, cameraP[3].y , cameraP[3].z , cameraP[3].w };
-		
+
 		batches[0]->cameraPosition = { mV0, mV1, mV2, mV3 };
 		batches[0]->updateUniforms(batches[0]->cameraPosition);
 	}

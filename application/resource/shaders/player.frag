@@ -1,9 +1,9 @@
-#version 330 core
+#version 450 core
 
-in vec4 sharedColor;
-
-out vec4 color;
+layout (location = 6) in vec4 sharedColor;
+layout (location = 0) out vec4 color;
 
 void main() {
 	color = sharedColor;
+	
 }

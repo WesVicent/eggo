@@ -18,7 +18,6 @@ public:
 	Buffer(BufferData vertices, const std::function<void()>& whenBond);
 	Buffer(const std::function<void()>& whenBond);
 
-	// Virtual destructor to compiler automagically call base destructor on child destructior.
 	~Buffer();
 
 private:

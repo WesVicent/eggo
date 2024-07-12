@@ -13,6 +13,8 @@ class Window {
 protected:
 	Window(int width, int height, const char* title);
 
+	static void ErrorCallback(int, const char* err_str);
+
 	void bindKeyCallBack(GLFWkeyfun cbfun);
 
 	GLFWwindow* context;

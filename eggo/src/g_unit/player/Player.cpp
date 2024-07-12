@@ -39,6 +39,7 @@ void Player::allowMovements(MainWindow::EnabledKeys key) {
 
 		for(int i = 0; i < batch->VERTICES_COUNT; i++) {
 			batch->VERTICES[i].position = math::vec3 {batch->VERTICES[i].position.x + calculated.x, batch->VERTICES[i].position.y + calculated.y, 1.0f};
+			batch->VERTICES[i].color = math::vec4 {batch->VERTICES[i].color.x + 0.0002f, batch->VERTICES[i].color.y + 0.0002f, batch->VERTICES[i].color.z + 0.0002f, 1.0f};
 		}
 
 		// TODO: Remove this static casting. 

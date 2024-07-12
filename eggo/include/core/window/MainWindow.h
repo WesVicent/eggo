@@ -19,15 +19,11 @@ namespace MainWindow {
 	inline std::unique_ptr<Renderer::Entity> renderer;
 
 	class Entity : public Window, public MainWindowSpecs {
-	protected:
-
 	public:
 		static GLFWwindow* init();
 
 		Entity(int width, int height, const char* title);
 		~Entity();
-	private:
-
 	};
 }
 

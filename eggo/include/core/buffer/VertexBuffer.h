@@ -8,6 +8,7 @@
 #define VERTEX_BUFFER_H
 
 #include <functional>
+#include <memory>
 
 #include "util/Utils.h"
 #include "core/buffer/Buffer.h"
