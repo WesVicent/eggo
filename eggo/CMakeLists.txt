@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(PROJ_DIR "${CMAKE_SOURCE_DIR}/eggo")
+set(PROJ_DIR "C:/Users/conta/Desktop/Pastas/Projects/EggO/Playground/eggo")
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -19,7 +19,6 @@ set(RELEASE_TYPE "Release")
 if(NOT DEFINED CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE ${DEBUG_TYPE})
 endif()
-
 if(CMAKE_GENERATOR  MATCHES "Visual Studio")
 	file(GLOB sources
 	"${PROJ_DIR}/src/*.cpp"

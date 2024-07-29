@@ -4,8 +4,7 @@
 
 #include "macros/build_macro.h"
 #include "util/Global.h"
-#include "core/Application.h"
-
+#include "Application.h"
 
 namespace eggo {
 	void init();
