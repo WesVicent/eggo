@@ -16,11 +16,16 @@
 #include "ProgramShader.h"
 #include "VAO.h"
 #include "Buffer.h"
+#include "DataBatcher.h"
 
 	class Renderer {
 	public:
 		std::unique_ptr<Vao> vao;
 		std::unique_ptr<ProgramShader> program;
+		std::unique_ptr<DataBatcher> dataBatcher;
+
+		void add(BatchData data);
+		void sendDataToGPU();
 
 		Renderer();
 		~Renderer();

@@ -2,6 +2,10 @@
 
 void DataBatcher::add(BatchData batchData)
 {
+	if (this->dataPoint - this->data >= MAX_VERTEX_COUNT) {
+		sendDataToGPU();
+	}
+
 	memcpy(dataPoint, batchData.data, sizeof(VertexData) * 4);
 	dataPoint = dataPoint + 4;
 
@@ -16,8 +20,12 @@ void DataBatcher::add(BatchData batchData)
 	this->indices.insert(this->indices.end(), batchData.indices.begin(), batchData.indices.end());
 }
 
+void DataBatcher::sendDataToGPU() {
+
+}
+
 void DataBatcher::init() {
-	data = new VertexData[100];
+	data = new VertexData[MAX_VERTEX_COUNT];
 	dataPoint = data;
 }
 

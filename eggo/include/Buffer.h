@@ -10,6 +10,7 @@ class BufferNew
 {
 public:
 	unsigned int id;
+	int type;
 
 	void bind();
 	void unbind();
@@ -17,7 +18,6 @@ public:
 	~BufferNew();
 
 private:
-	int type;
 
 };
 

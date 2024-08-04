@@ -49,7 +49,37 @@ Renderer::Renderer() {
 	glDeleteShader(fShader.id);
 
 	vao = std::make_unique<Vao>();
-	
+
+	dataBatcher = std::make_unique<DataBatcher>();
+
+}
+
+void Renderer::add(BatchData data) {
+	size_t indexSize = this->dataBatcher->indices.size();
+
+	//if (indexSize >= this->dataBatcher->MAX_QUAD_IN_BATCH * 6) {
+	//	this->sendDataToGPU();
+
+	//	// Begin
+	//	this->dataBatcher->dataPoint = this->dataBatcher->data;
+	//	this->dataBatcher->indices = {};
+	//}
+
+	this->dataBatcher->add(data);
+}
+
+void Renderer::sendDataToGPU() {
+	// vbo.bind(); TODO:
+	glBindBuffer(GL_ARRAY_BUFFER, 1);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(VertexData) * (this->dataBatcher->dataPoint - this->dataBatcher->data), this->dataBatcher->data);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	// ebo.bind(); TODO:
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 2);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * this->dataBatcher->indices.size(), &this->dataBatcher->indices[0], GL_STATIC_DRAW);
+
+	this->vao->bind();
+	glDrawElements(GL_TRIANGLES, this->dataBatcher->indices.size(), GL_UNSIGNED_INT, nullptr);
 }
 
 Renderer::~Renderer() {
